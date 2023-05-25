@@ -1,63 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Neon Lettering</title>
   <style>
     body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-color: black;
-      color: #333;
+      background-color: #000;
     }
-
-    #neonText {
-      font-family: 'Arial', sans-serif;
-      font-size: 72px;
+    #backgroundText {
+      color: #555;
+      font-size: 32px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
-      color: #fff;
-      animation: none;
     }
-
-    #instructionText {
-      font-family: 'Arial', sans-serif;
-      font-size: 24px;
-      text-align: center;
-      margin-top: 20px;
-    }
-
     @keyframes neon {
       0% {
-        text-shadow: 0 0 5px #fff;
-      }
-      50% {
-        text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff, 0 0 80px #ff00ff;
+        text-shadow: 0 0 10px #ff00f5, 0 0 20px #ff00f5, 0 0 30px #ff00f5, 0 0 40px #ff00f5, 0 0 50px #ff00f5, 0 0 60px #ff00f5, 0 0 70px #ff00f5, 0 0 80px #ff00f5;
       }
       100% {
-        text-shadow: 0 0 5px #fff;
+        text-shadow: 0 0 2px #ff00f5, 0 0 5px #ff00f5, 0 0 10px #ff00f5, 0 0 20px #ff00f5, 0 0 30px #ff00f5, 0 0 40px #ff00f5, 0 0 50px #ff00f5, 0 0 60px #ff00f5;
       }
+    }
+    .neon-text {
+      color: #ff00f5;
+      font-size: 36px;
+      animation: neon 1.5s ease-in-out infinite alternate;
     }
   </style>
 </head>
 <body>
-  <div id="neonText"></div>
-  <div id="instructionText">Interact with Keyboard</div>
+  <h1 id="typedText" class="neon-text"></h1>
+  <span id="backgroundText">Type something...</span>
 
   <script>
     document.addEventListener('keydown', function(event) {
-      var key = event.key;
-      var div = document.getElementById('neonText');
-      div.innerText = key;
-      div.style.animation = 'none';
-      div.offsetHeight; // Trigger reflow to reset the animation
-      div.style.animation = 'neon 2s linear';
-    });
+      const typedText = document.getElementById('typedText');
+      const backgroundText = document.getElementById('backgroundText');
 
-    document.addEventListener('keyup', function() {
-      var div = document.getElementById('neonText');
-      div.style.animation = 'none';
+      // If backspace is pressed and there is text, remove the last character
+      if (event.key === 'Backspace' && typedText.textContent.length > 0) {
+        typedText.textContent = typedText.textContent.slice(0, -1);
+      }
+      // Otherwise, append the pressed key to the typed text
+      else if (event.key.length === 1) {
+        typedText.textContent += event.key;
+      }
+
+      // Show or hide the background text based on typed text content
+      backgroundText.style.display = typedText.textContent.length > 0 ? 'none' : 'block';
     });
   </script>
 </body>
