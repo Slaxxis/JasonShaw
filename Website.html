@@ -1,84 +1,128 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Particle Display</title>
-    <style>
-        canvas {
-            border: 1px solid black;
-        }
-    </style>
+  <title>Particles Control</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: rgb(17, 17, 17);
+    }
+
+    canvas {
+      display: block;
+    }
+
+    #message {
+      position: absolute;
+      color: rgb(92, 92, 92);
+      font-size: 20px;
+      white-space: nowrap;
+    }
+  </style>
 </head>
 <body>
-    <h1>Particle Display</h1>
-    
-    <canvas id="canvas" width="500" height="500"></canvas>
-    <br>
-    <button id="startButton">Start</button>
-    <input type="color" id="colorPicker" value="#ff0000">
+  <canvas id="canvas"></canvas>
 
-    <script>
-        var canvas = document.getElementById("canvas");
-        var ctx = canvas.getContext("2d");
-        var particles = [];
-        var requestId;
-        var color = document.getElementById("colorPicker").value;
+  <div id="message">Created by Jason Shaw. Particles are 100% html, js, and css.</div>
 
-        function Particle(x, y, color) {
-            this.x = x;
-            this.y = y;
-            this.color = color;
-            this.vx = Math.random() * 2 - 1;
-            this.vy = Math.random() * 2 - 1;
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"></script>
+  <script>
+    class Particle {
+      constructor(x, y, radius, dx, dy, color) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.dx = dx;
+        this.dy = dy;
+        this.color = color;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+
+      update() {
+        if (this.x + this.radius + this.dx > canvas.width || this.x - this.radius + this.dx < 0) {
+          this.dx = -this.dx;
         }
 
-        Particle.prototype.draw = function() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, 5, 0, Math.PI * 2, false);
-            ctx.fillStyle = this.color;
-            ctx.fill();
-        };
-
-        function createParticle(event) {
-            var rect = canvas.getBoundingClientRect();
-            var x = event.clientX - rect.left;
-            var y = event.clientY - rect.top;
-            var particle = new Particle(x, y, color);
-            particles.push(particle);
+        if (this.y + this.radius + this.dy > canvas.height || this.y - this.radius + this.dy < 0) {
+          this.dy = -this.dy;
         }
 
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        this.x += this.dx;
+        this.y += this.dy;
 
-            for (var i = 0; i < particles.length; i++) {
-                var particle = particles[i];
-                particle.x += particle.vx;
-                particle.y += particle.vy;
-                particle.draw();
+        this.draw();
+      }
+    }
 
-                if (particle.x < 0 || particle.x > canvas.width || particle.y < 0 || particle.y > canvas.height) {
-                    particles.splice(i, 1);
-                    i--;
-                }
-            }
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const messageElement = document.getElementById('message');
 
-            requestId = requestAnimationFrame(animate);
-        }
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-        function startAnimation() {
-            requestId = requestAnimationFrame(animate);
-        }
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
 
-        function stopAnimation() {
-            cancelAnimationFrame(requestId);
-        }
+    let particles = [];
+    for (let i = 0; i < 50; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const radius = Math.random() * 2 + 1;
+      const dx = (Math.random() - 0.5) * 3;
+      const dy = (Math.random() - 0.5) * 3;
+      const color = generateColor();
+      particles.push(new Particle(x, y, radius, dx, dy, color));
+    }
 
-        function updateColor() {
-            color = document.getElementById("colorPicker").value;
-        }
+    function generateColor() {
+      const colors = ['#FFCA28', '#FF9800', '#FF5722', '#E91E63', '#FF4081'];
+      const randomIndex = Math.floor(Math.random() * colors.length);
+      return colors[randomIndex];
+    }
 
-        canvas.addEventListener("mousedown", createParticle);
-        document.getElementById("startButton").addEventListener("click", startAnimation);
-        document.getElementById("colorPicker").addEventListener("input", updateColor);
-    </script>
+    const textParticle = new Particle(
+      Math.random() * (window.innerWidth - messageElement.offsetWidth),
+      Math.random() * (window.innerHeight - messageElement.offsetHeight),
+      0,
+      0,
+      '',
+    );
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((particle) => {
+        particle.update();
+      });
+
+      textParticle.x += textParticle.dx;
+      textParticle.y += textParticle.dy;
+
+      if (textParticle.x + messageElement.offsetWidth > canvas.width || textParticle.x < 0) {
+        textParticle.dx = -textParticle.dx;
+      }
+      if (textParticle.y + messageElement.offsetHeight > canvas.height || textParticle.y < 0) {
+        textParticle.dy = -textParticle.dy;
+      }
+
+      messageElement.style.left = `${textParticle.x}px`;
+      messageElement.style.top = `${textParticle.y}px`;
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
 </body>
 </html>
