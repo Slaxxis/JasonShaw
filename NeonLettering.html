@@ -1,104 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Neon Lettering</title>
   <style>
     body {
-      background-color: black;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       height: 100vh;
-      margin: 0;
+      background-color: black;
+      color: #333;
     }
-    
-    .neon-text {
+
+    #neonText {
       font-family: 'Arial', sans-serif;
-      font-size: 60px;
-      color: black;
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 30px #ff00de, 0 0 40px #ff00de, 0 0 55px #ff00de, 0 0 75px #ff00de;
+      font-size: 72px;
+      text-align: center;
+      color: #fff;
+      animation: none;
     }
-    
-    .neon-text span {
-      animation: neon-glow 1s ease-in-out infinite alternate;
-    }
-    
-    .neon-text span:nth-child(4n+1) {
-      color: #ff00de;
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 30px #ff00de, 0 0 40px #ff00de, 0 0 55px #ff00de, 0 0 75px #ff00de;
-    }
-    
-    .neon-text span:nth-child(4n+2) {
-      color: #ff00de;
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 30px #ff00de, 0 0 40px #ff00de, 0 0 55px #ff00de, 0 0 75px #ff00de;
-    }
-    
-    .neon-text span:nth-child(4n+3) {
-      color: #ff00de;
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
-    }
-    
-    .neon-text span:nth-child(4n+4) {
-      color: #ff00de;
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
-    }
-    
-    .sub-text {
+
+    #instructionText {
       font-family: 'Arial', sans-serif;
-      font-size: 30px;
-      color: #00deff;
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #00deff, 0 0 30px #00deff, 0 0 40px #00deff, 0 0 55px #00deff, 0 0 75px #00deff;
+      font-size: 24px;
+      text-align: center;
+      margin-top: 20px;
     }
-    
-    .sub-text span {
-      animation: neon-glow 1s ease-in-out infinite alternate;
-    }
-    
-    @keyframes neon-glow {
-      from {
-        color: #fff;
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 30px #ff00de, 0 0 40px #ff00de, 0 0 55px #ff00de, 0 0 75px #ff00de;
+
+    @keyframes neon {
+      0% {
+        text-shadow: 0 0 5px #fff;
       }
-      to {
-        color: black;
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+      50% {
+        text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff, 0 0 80px #ff00ff;
+      }
+      100% {
+        text-shadow: 0 0 5px #fff;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1 class="neon-text">
-      <span>J</span>
-      <span>a</span>
-      <span>s</span>
-      <span>o</span>
-      <span>n</span>
-      <span>&nbsp;</span>
-      <span>S</span>
-      <span>h</span>
-      <span>a</span>
-      <span>w</span>
-    </h1>
-    <p class="sub-text">
-      <span>S</span>
-      <span>l</span>
-      <span>a</span>
-      <span>x</span>
-      <span>x</span>
-      <span>i</span>
-      <span>s</span>
-      <span>.</span>
-      <span>g</span>
-      <span>i</span>
-      <span>t</span>
-      <span>h</span>
-      <span>u</span>
-      <span>b</span>
-      <span>.</span>
-      <span>i</span>
-      <span>o</span>
-    </p>
-  </div>
+  <div id="neonText"></div>
+  <div id="instructionText">Interact with Keyboard</div>
+
+  <script>
+    document.addEventListener('keydown', function(event) {
+      var key = event.key;
+      var div = document.getElementById('neonText');
+      div.innerText = key;
+      div.style.animation = 'none';
+      div.offsetHeight; // Trigger reflow to reset the animation
+      div.style.animation = 'neon 2s linear';
+    });
+
+    document.addEventListener('keyup', function() {
+      var div = document.getElementById('neonText');
+      div.style.animation = 'none';
+    });
+  </script>
 </body>
 </html>
