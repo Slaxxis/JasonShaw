@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cat Generator</title>
+    <style>
+      body {
+        background-color: #333333;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      
+      #cat-frame {
+        width: 300px;
+        height: 300px;
+        border: 10px solid #dddddd;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        background-color: #ffffff;
+      }
+      
+      #cat-image {
+        max-width: 100%;
+        max-height: 100%;
+      }
+      
+      #generate-button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: none;
+        background-color: #dddddd;
+        color: #333333;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      
+      #info-box {
+        margin-top: 20px;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      function generateCat() {
+        $.ajax({
+          url: 'https://api.thecatapi.com/v1/images/search',
+          method: 'GET',
+          success: function(response) {
+            if (response && response.length > 0) {
+              var catImage = response[0].url;
+              document.getElementById('cat-image').src = catImage;
+            }
+          },
+          error: function() {
+            console.log('Error occurred while fetching cat image.');
+          }
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Cat Generator</h1>
+    <div id="cat-frame">
+      <img id="cat-image" src="" alt="Cat Image">
+    </div>
+    <button id="generate-button" onclick="generateCat()">Generate Cat</button>
+    <div id="info-box">
+      <p>This program was coded in HTML and uses thecatapi.com to generate images and gifs.</p>
+    </div>
+  </body>
+</html>
