@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Neon Lettering</title>
+  <style>
+    body {
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    .neon-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 60px;
+      color: black;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 30px #ff00de, 0 0 40px #ff00de, 0 0 55px #ff00de, 0 0 75px #ff00de;
+    }
+    
+    .neon-text span {
+      animation: neon-glow 1s ease-in-out infinite alternate;
+    }
+    
+    .neon-text span:nth-child(4n+1) {
+      color: #ff00de;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 30px #ff00de, 0 0 40px #ff00de, 0 0 55px #ff00de, 0 0 75px #ff00de;
+    }
+    
+    .neon-text span:nth-child(4n+2) {
+      color: #ff00de;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 30px #ff00de, 0 0 40px #ff00de, 0 0 55px #ff00de, 0 0 75px #ff00de;
+    }
+    
+    .neon-text span:nth-child(4n+3) {
+      color: #ff00de;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+    }
+    
+    .neon-text span:nth-child(4n+4) {
+      color: #ff00de;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+    }
+    
+    .sub-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 30px;
+      color: #00deff;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #00deff, 0 0 30px #00deff, 0 0 40px #00deff, 0 0 55px #00deff, 0 0 75px #00deff;
+    }
+    
+    .sub-text span {
+      animation: neon-glow 1s ease-in-out infinite alternate;
+    }
+    
+    @keyframes neon-glow {
+      from {
+        color: #fff;
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 30px #ff00de, 0 0 40px #ff00de, 0 0 55px #ff00de, 0 0 75px #ff00de;
+      }
+      to {
+        color: black;
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="neon-text">
+      <span>J</span>
+      <span>a</span>
+      <span>s</span>
+      <span>o</span>
+      <span>n</span>
+      <span>&nbsp;</span>
+      <span>S</span>
+      <span>h</span>
+      <span>a</span>
+      <span>w</span>
+    </h1>
+    <p class="sub-text">
+      <span>S</span>
+      <span>l</span>
+      <span>a</span>
+      <span>x</span>
+      <span>x</span>
+      <span>i</span>
+      <span>s</span>
+      <span>.</span>
+      <span>g</span>
+      <span>i</span>
+      <span>t</span>
+      <span>h</span>
+      <span>u</span>
+      <span>b</span>
+      <span>.</span>
+      <span>i</span>
+      <span>o</span>
+    </p>
+  </div>
+</body>
+</html>
