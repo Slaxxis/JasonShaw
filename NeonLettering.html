@@ -23,15 +23,26 @@
       }
     }
     .neon-text {
-      color: #ff00f5;
+      color: #ff9100;
       font-size: 36px;
       animation: neon 1.5s ease-in-out infinite alternate;
+    }
+    .button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #444;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <h1 id="typedText" class="neon-text"></h1>
   <span id="backgroundText">Type something...</span>
+  <a href="https://slaxxis.github.io/" class="button">Back</a>
 
   <script>
     document.addEventListener('keydown', function(event) {
