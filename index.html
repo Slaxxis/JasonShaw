@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jason Shaw CS Project Hub</title>
+  <style>
+    body {
+      background-color: #212121;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 70vh;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #f463038c;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 18px;
+      cursor: pointer;
+      margin: 10px;
+      transition: background-color 0.3s ease;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .button:hover {
+      background-color: #039be5;
+    }
+
+    .particle-effect {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+      animation: particleAnimation 5s linear infinite;
+    }
+
+    @keyframes particleAnimation {
+      0% {
+        opacity: 0;
+      }
+      25% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="particle-effect">
+    <div class="particle"></div>
+  </div>
+
+  <h1>Welcome to Jason Shaw CS Project Hub!</h1>
+
+  <div class="button-container">
+    <a class="button" href="https://slaxxis.github.io/Website.html">Particle Simulation</a>
+    <a class="button" href="#">Pholder</a>
+    <a class="button" href="#">Pholder</a>
+  </div>
+
+  <script>
+    const particleEffect = document.querySelector('.particle-effect');
+    const particle = document.querySelector('.particle');
+
+    for (let i = 0; i < 30; i++) {
+      const newParticle = particle.cloneNode();
+      newParticle.style.left = `${Math.random() * 100}%`;
+      newParticle.style.top = `${Math.random() * 100}%`;
+      newParticle.style.animationDelay = `${Math.random() * 5}s`;
+      particleEffect.appendChild(newParticle);
+    }
+
+    particle.remove();
+  </script>
+</body>
+</html>
