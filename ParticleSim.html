@@ -20,13 +20,27 @@
       font-size: 20px;
       white-space: nowrap;
       cursor: pointer;
-    }a
+    }
+
+    .back-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #dddddd;
+      color: #333333;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <canvas id="canvas"></canvas>
 
   <div id="message">Created by JS (github.com/Slaxxis) using 100% html.</div>
+
+  <button class="back-button" onclick="goBack()">Back</button>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"></script>
   <script>
@@ -125,12 +139,9 @@
 
     animate();
 
-    messageElement.addEventListener('click', () => {
-      const newX = Math.random() * (window.innerWidth - messageElement.offsetWidth);
-      const newY = Math.random() * (window.innerHeight - messageElement.offsetHeight);
-      textParticle.x = newX;
-      textParticle.y = newY;
-    });
+    function goBack() {
+      window.location.href = 'https://slaxxis.github.io/';
+    }
   </script>
 </body>
 </html>
