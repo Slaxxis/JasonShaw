@@ -16,7 +16,7 @@
     .neon-text {
       font-family: 'Arial', sans-serif;
       font-size: 60px;
-      color: black;
+      color: rgb(0, 0, 0);
       text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
     }
     
@@ -26,7 +26,7 @@
     
     .neon-text span:nth-child(4n+1) {
       color: #ff0000;
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+      text-shadow: 0 0 5px #ffffff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
     }
     
     .neon-text span:nth-child(4n+2) {
@@ -48,7 +48,7 @@
       font-family: 'Arial', sans-serif;
       font-size: 30px;
       color: #00deff;
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #00deff, 0 0 30px #00deff, 0 0 40px #00deff, 0 0 55px #00deff, 0 0 75px #00deff;
+      text-shadow: 0 0 5px #000000, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #00deff, 0 0 30px #00deff, 0 0 40px #00deff, 0 0 55px #00deff, 0 0 75px #00deff;
     }
     
     .sub-text span {
@@ -72,6 +72,18 @@
       text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #00deff, 0 0 30px #00deff, 0 0 40px #00deff, 0 0 55px #00deff, 0 0 75px #00deff;
       animation: neon-glow 2s ease-in-out infinite alternate;
       cursor: pointer;
+    }
+    
+    .footer-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      color: rgb(116, 116, 116);
+      text-align: center;
+      margin-top: 30px;
+      position: sticky;
+      bottom: 60;
+      left: 0;
+      width: 80%;
     }
     
     @keyframes neon-glow {
@@ -120,11 +132,10 @@
       <span>o</span>
     </p>
     <div class="button-container">
-      <button class="glowing-button" onclick="window.location.href = 'https://slaxxis.github.io/ParticleSim.html'">Particle simulation</button>
-      <button class="glowing-button" onclick="window.location.href = 'https://slaxxis.github.io/NeonLettering.html'">Neon Typing</button>
-      <button class="glowing-button" onclick="window.location.href = 'https://slaxxis.github.io/CatGenerator.html'">Cat Generator</button>
-      <button class="glowing-button" onclick="window.location.href = 'https://github.com/Slaxxis/Slaxxis.github.io'">All the code for this website</button>
+      <button class="glowing-button" onclick="window.location.href = 'https://slaxxis.github.io/Website.html'">Particle simulation</button>
+      <button class="glowing-button" onclick="window.location.href = 'https://slaxxis.github.io/NeonLettering.html'">Neon Lettering</button>
     </div>
+    <p class="footer-text">This website was created entirely with HTML. All the projects on it are completely from scratch and do not contain any external content with the exception of API data and several JS libraries.</p>
   </div>
 </body>
 </html>
