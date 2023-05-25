@@ -19,13 +19,14 @@
       color: rgb(92, 92, 92);
       font-size: 20px;
       white-space: nowrap;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <canvas id="canvas"></canvas>
 
-  <div id="message">Created by Jason Shaw. Particles are 100% html, js, and css.</div>
+  <div id="message">Created by Jason Shaw using 100% html.</div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"></script>
   <script>
@@ -123,6 +124,13 @@
     }
 
     animate();
+
+    messageElement.addEventListener('click', () => {
+      const newX = Math.random() * (window.innerWidth - messageElement.offsetWidth);
+      const newY = Math.random() * (window.innerHeight - messageElement.offsetHeight);
+      textParticle.x = newX;
+      textParticle.y = newY;
+    });
   </script>
 </body>
 </html>
