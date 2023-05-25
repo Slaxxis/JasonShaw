@@ -1,108 +1,128 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Jason Shaw CS Project Hub</title>
+  <title>Neon Lettering</title>
   <style>
     body {
-      background-color: #212121;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .button-container {
+      background-color: black;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      height: 70vh;
+      height: 100vh;
+      margin: 0;
     }
-
-    .button {
-      display: inline-block;
-      background-color: #f463038c;
-      color: #fff;
+    
+    .neon-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 60px;
+      color: black;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+    }
+    
+    .neon-text span {
+      animation: neon-glow 2s ease-in-out infinite alternate;
+    }
+    
+    .neon-text span:nth-child(4n+1) {
+      color: #ff0000;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+    }
+    
+    .neon-text span:nth-child(4n+2) {
+      color: #ff0000;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+    }
+    
+    .neon-text span:nth-child(4n+3) {
+      color: #ff0000;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #005eff, 0 0 30px #005eff, 0 0 40px #005eff, 0 0 55px #005eff, 0 0 75px #005eff;
+    }
+    
+    .neon-text span:nth-child(4n+4) {
+      color: #ff0000;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #005eff, 0 0 30px #005eff, 0 0 40px #005eff, 0 0 55px #005eff, 0 0 75px #005eff;
+    }
+    
+    .sub-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 30px;
+      color: #00deff;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #00deff, 0 0 30px #00deff, 0 0 40px #00deff, 0 0 55px #00deff, 0 0 75px #00deff;
+    }
+    
+    .sub-text span {
+      animation: neon-glow 2s ease-in-out infinite alternate;
+    }
+    
+    .button-container {
+      display: flex;
+      margin-top: 20px;
+    }
+    
+    .glowing-button {
+      font-family: 'Arial', sans-serif;
+      font-size: 20px;
+      padding: 10px 20px;
+      margin: 0 10px;
+      color: black;
+      background-color: #272727;
       border: none;
-      padding: 12px 24px;
-      text-align: center;
-      text-decoration: none;
-      font-size: 18px;
+      border-radius: 5px;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #00deff, 0 0 30px #00deff, 0 0 40px #00deff, 0 0 55px #00deff, 0 0 75px #00deff;
+      animation: neon-glow 2s ease-in-out infinite alternate;
       cursor: pointer;
-      margin: 10px;
-      transition: background-color 0.3s ease;
-      border-radius: 4px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
-
-    .button:hover {
-      background-color: #039be5;
-    }
-
-    .particle-effect {
-      pointer-events: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      overflow: hidden;
-    }
-
-    .particle {
-      position: absolute;
-      background-color: rgba(255, 255, 255, 0.6);
-      border-radius: 50%;
-      pointer-events: none;
-      opacity: 0;
-      animation: particleAnimation 5s linear infinite;
-    }
-
-    @keyframes particleAnimation {
-      0% {
-        opacity: 0;
+    
+    @keyframes neon-glow {
+      from {
+        color: #fff;
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
       }
-      25% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
+      to {
+        color: black;
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #005eff, 0 0 30px #005eff, 0 0 40px #005eff, 0 0 55px #005eff, 0 0 75px #005eff;
       }
     }
   </style>
 </head>
 <body>
-  <div class="particle-effect">
-    <div class="particle"></div>
+  <div class="container">
+    <h1 class="neon-text">
+      <span>J</span>
+      <span>a</span>
+      <span>s</span>
+      <span>o</span>
+      <span>n</span>
+      <span>&nbsp;</span>
+      <span>S</span>
+      <span>h</span>
+      <span>a</span>
+      <span>w</span>
+    </h1>
+    <p class="sub-text">
+      <span>S</span>
+      <span>l</span>
+      <span>a</span>
+      <span>x</span>
+      <span>x</span>
+      <span>i</span>
+      <span>s</span>
+      <span>.</span>
+      <span>g</span>
+      <span>i</span>
+      <span>t</span>
+      <span>h</span>
+      <span>u</span>
+      <span>b</span>
+      <span>.</span>
+      <span>i</span>
+      <span>o</span>
+    </p>
+    <div class="button-container">
+      <button class="glowing-button" onclick="window.location.href = 'https://slaxxis.github.io/Website.html'">Particle simulation</button>
+      <!-- Add more buttons here -->
+    </div>
   </div>
-
-  <h1>Welcome to Jason Shaw CS Project Hub!</h1>
-
-  <div class="button-container">
-    <a class="button" href="https://slaxxis.github.io/Website.html">Particle Simulation</a>
-    <a class="button" href="#">Pholder</a>
-    <a class="button" href="#">Pholder</a>
-  </div>
-
-  <script>
-    const particleEffect = document.querySelector('.particle-effect');
-    const particle = document.querySelector('.particle');
-
-    for (let i = 0; i < 30; i++) {
-      const newParticle = particle.cloneNode();
-      newParticle.style.left = `${Math.random() * 100}%`;
-      newParticle.style.top = `${Math.random() * 100}%`;
-      newParticle.style.animationDelay = `${Math.random() * 5}s`;
-      particleEffect.appendChild(newParticle);
-    }
-
-    particle.remove();
-  </script>
 </body>
 </html>
