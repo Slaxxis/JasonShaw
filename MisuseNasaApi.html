@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Planet Picture Viewer</title>
+  <style>
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .frame {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 400px;
+      height: 400px;
+      border: 2px solid #333;
+      margin-bottom: 20px;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Planet Picture Viewer</h1>
+
+    <label for="planet-input">Enter a planet:</label>
+    <input type="text" id="planet-input">
+    <button onclick="fetchPlanetPicture()">Get Picture</button>
+
+    <div class="frame" id="picture-frame"></div>
+  </div>
+
+  <script>
+    function fetchPlanetPicture() {
+      const planetInput = document.getElementById('planet-input').value;
+      const pictureFrame = document.getElementById('picture-frame');
+
+      // Clear existing picture
+      pictureFrame.innerHTML = '';
+
+      // Fetch picture from NASA Images API
+      fetch(`https://images-api.nasa.gov/search?q=${planetInput}`)
+        .then(response => response.json())
+        .then(data => {
+          const items = data.collection.items;
+          if (items.length > 0) {
+            const imageUrl = items[0].links[0].href;
+            const image = document.createElement('img');
+            image.src = imageUrl;
+            pictureFrame.appendChild(image);
+          } else {
+            pictureFrame.innerHTML = 'No picture found.';
+          }
+        })
+        .catch(error => {
+          console.error(error);
+          pictureFrame.innerHTML = 'Error fetching picture.';
+        });
+    }
+  </script>
+</body>
+</html>
