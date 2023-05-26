@@ -10,6 +10,7 @@
       margin: 0;
       padding: 0;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
@@ -37,17 +38,27 @@
       max-width: 100%;
       max-height: 100%;
     }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Planet Picture Viewer</h1>
+    <h1>NASA Picture Api</h1>
 
-    <label for="planet-input">Enter a planet:</label>
+    <label for="planet-input">Enter an object:</label>
     <input type="text" id="planet-input">
     <button onclick="fetchPlanetPicture()">Get Picture</button>
 
     <div class="frame" id="picture-frame"></div>
+  </div>
+
+  <div class="footer">
+    <p>This was originally supposed to be a NASA API pictures of planets thing, but it's way funnier to input random stuff into NASA's image API and see what it prints back out.</p>
   </div>
 
   <script>
