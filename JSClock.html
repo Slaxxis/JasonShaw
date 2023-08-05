@@ -12,8 +12,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
+    justify-content: space-between; /* Adjusted for space between clock and footer */
+    height: 90vh;
     margin: 0;
   }
   #clock {
@@ -42,7 +42,7 @@
     text-align: center;
     font-size: 14px;
     opacity: 0.7;
-    margin-top: 100px;
+    margin-top: 20px;
   }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
@@ -50,48 +50,44 @@
 <body>
 <div id="clock"></div>
 <script>
-  let currentClockText = '';
-
   function updateClock() {
     const clockElement = document.getElementById("clock");
 
-    if (currentClockText === '') {
-      const now = new Date();
+    const now = new Date();
 
-      const months = [
-        "January", "February", "March", "April",
-        "May", "June", "July", "August",
-        "September", "October", "November", "December"
-      ];
+    const months = [
+      "January", "February", "March", "April",
+      "May", "June", "July", "August",
+      "September", "October", "November", "December"
+    ];
 
-      let clockData = {
-        hour: now.getHours() % 12 || 12,
-        minute: String(now.getMinutes()).padStart(2, "0"),
-        second: String(now.getSeconds()).padStart(2, "0"),
-        period: now.getHours() < 12 ? "AM" : "PM",
-        day: now.getDate(),
-        month: months[now.getMonth()],
-        year: now.getFullYear(),
+    let clockData = {
+      hour: now.getHours() % 12 || 12,
+      minute: String(now.getMinutes()).padStart(2, "0"),
+      second: String(now.getSeconds()).padStart(2, "0"),
+      period: now.getHours() < 12 ? "AM" : "PM",
+      day: now.getDate(),
+      month: months[now.getMonth()],
+      year: now.getFullYear(),
+    };
+
+    const currentClockText = `
+      <span class="keyword">let</span> <span class="variable">clock</span> = {
+        <span class="property"><span class="variable">hour</span></span>: <span class="int">${clockData.hour}</span>,
+        <span class="property"><span class="variable">minute</span></span>: <span class="int">${clockData.minute}</span>,
+        <span class="property"><span class="variable">second</span></span>: <span class="int">${clockData.second}</span>,
+        <span class="property"><span class="variable">period</span></span>: <span class="string">"${clockData.period}"</span>,
+        <span class="property"><span class="variable">day</span></span>: <span class="int">${clockData.day}</span>,
+        <span class="property"><span class="variable">month</span></span>: <span class="string">"${clockData.month}"</span>,
+        <span class="property"><span class="variable">year</span></span>: <span class="int">${clockData.year}</span>
       };
-
-      currentClockText = `
-        <span class="keyword">let</span> <span class="variable">clock</span> = {
-          <span class="property"><span class="variable">hour</span></span>: <span class="int">${clockData.hour}</span>,
-          <span class="property"><span class="variable">minute</span></span>: <span class="int">${clockData.minute}</span>,
-          <span class="property"><span class="variable">second</span></span>: <span class="int">${clockData.second}</span>,
-          <span class="property"><span class="variable">period</span></span>: <span class="string">"${clockData.period}"</span>,
-          <span class="property"><span class="variable">day</span></span>: <span class="int">${clockData.day}</span>,
-          <span class="property"><span class="variable">month</span></span>: <span class="string">"${clockData.month}"</span>,
-          <span class="property"><span class="variable">year</span></span>: <span class="int">${clockData.year}</span>
-        };
-      `;
-    }
+    `;
 
     clockElement.innerHTML = currentClockText;
   }
 
-  updateClock();
   setInterval(updateClock, 1000);
+  updateClock();
 </script>
 <div id="footer">
   Minimalistic JavaScript Clock<br>
