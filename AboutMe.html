@@ -11,12 +11,14 @@
     font-family: "Fira Code", monospace;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     height: 100vh;
     margin: 0;
     overflow: hidden;
+    padding-left: 20px;
   }
+  
   #back-button {
     position: absolute;
     bottom: 10px;
@@ -29,34 +31,44 @@
     cursor: pointer;
     opacity: 1;
   }
-
+  
   #about-text {
-    text-align: center;
-    margin-top: 40px;
+    text-align: center; /* Center the "About Me" text */
+    padding: 20px;
+    margin: 0 auto; /* Center the about text div */
   }
+  
+  #about-frame {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow: hidden;
+    height: 80vh;
+  }
+  
   #typed-text {
     white-space: pre-wrap;
-    font-size: 16px;
+    font-size: 14px;
+    text-align: left; /* Align the typed text to the left */
   }
-  /* Rest of your styles... */
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
 </head>
 <body>
-<button id="back-button" onclick="window.location.href='https://slaxxis.github.io/JasonShaw/'">Back</button>
+<a id="back-button" href="https://slaxxis.github.io/JasonShaw/">Back</a>
 <div id="about-text">
-  <h2>About Me</h2>
-  <p id="typed-text"></p>
+  <h2>About Jason Shaw</h2>
+  <div id="about-frame">
+    <p id="typed-text"></p>
+  </div>
 </div>
 
 <script>
-  function updateClock() {
-    // Your existing clock update code...
-  }
-
   function typeText(text, element) {
     let i = 0;
-    const speed = 10; // Adjust typing speed here
+    const speed = 0.1;
+
     function type() {
       if (i < text.length) {
         element.innerHTML += text.charAt(i);
@@ -69,20 +81,23 @@
 
   function showAboutText() {
     const typedTextElement = document.getElementById("typed-text");
-    const aboutText = `I am Jason Shaw Jr, a highschool senior at Fernandina Beach High School with bold plans for the future. My 5 year plan consists of completing a bachelors in Mechanical or Electrical engineering and either immediately finding a job in my chosen field, or going on to pursue graduate studies so I can advance my passion for creation even farther.
+    const aboutText = `I am Jason Shaw Jr, a 17 year old High School senior at Fernandina Beach High School in Florida. Aside from playing musical instruments, my primary passions include solving problems, and figuring the universe out.
 
-    For the last few years I have spent countless hours online researching and learning about everything imaginable. My passion for learning has no bounds, and as a result, I have delved into an expanse of self taught learning from the comfort of my own bedroom. I have a good grasp on mathematical logic, programming, and engineering alike.
+    The questions that have always enticed me are the ones that are not easily answered, and so I have made it my life’s mission to learn as much as I can about anything and everything. Several years ago I built my first computer, and it’s from this entry into the digital world where I really began to realise my purpose. 
     
-    Through my studies I have produced several publications including a geometric integral formula, this website and all its projects, and most recently, a research paper about dielectric elastomers and other electroactive polymers. 
+    I have spent countless hours scrolling through the deepest corners of the internet and absorbing as much knowledge as I could grasp. From History to Physics, nothing that poses a question is boring to me, and so I consider myself to be as much of a teacher as a student.
+
+    My relationship with engineering is a complicated one to say the least. Most of the questions posed by engineering are much more easily answered than those posed by other fields, however the direct connection between theory and application in engineering makes it by far the most appealing to me. I have plans to complete a bachelor's degree in engineering, and I have most recently also been considering postgraduate studies so I can pull my chosen field forward even further. 
+
+    Over the last several years my personal academic interests have produced several publications from various different but related fields: A geometric integral formula, This website and all of its projects, and most recently, a research paper on Dielectric Elastomers, just to name a few.
+
+    It is my hope that this website and all of its content might serve as a portfolio for all my past, present and future projects, whatever those may be. The pursuit of answers is not always easy, but the feeling of something you spent hours, months, or years working on is too great to ignore. 
     
-    I can be contacted at jj@mountmyfish.com with any questions or inquiries.`;
+    I can be contacted via e-mail at jj@mountmyfish.com.`;
     typeText(aboutText, typedTextElement);
   }
 
-  setInterval(updateClock, 1000);
-  updateClock();
   showAboutText();
 </script>
-<a id="back-button" href="https://slaxxis.github.io/JasonShaw/">Back</a>
 </body>
 </html>
