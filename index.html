@@ -53,22 +53,38 @@
     cursor: pointer;
     transition: background-color 0.2s, transform 0.2s;
   }
-  .project-button2 {
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4ec9b0;
-    color: red;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
-  }
   .project-button:hover {
     background-color: #1e7d6e;
     transform: scale(1.05);
   }
-
+  #skills {
+    margin-top: 40px;
+    text-align: center;
+  }
+  .skill {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .skill-name {
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+  .progress-bar {
+    width: 100%;
+    background-color: #134b42;
+    height: 20px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  .progress {
+    height: 100%;
+    background-color: #4ec9b0;
+    border-radius: 10px;
+    transition: width 0.5s;
+  }
   /* Media queries for mobile devices */
   @media (max-width: 768px) {
     #animated-text {
@@ -79,6 +95,9 @@
     }
     .project-button {
       font-size: 12px;
+    }
+    .skill-name {
+      font-size: 16px;
     }
   }
 </style>
@@ -92,9 +111,36 @@
   <button class="project-button" onclick="window.location.href='https://slaxxis.github.io/JasonShaw/CatGenerator.html'">Cat Generator</button>
   <button class="project-button" onclick="window.location.href='https://slaxxis.github.io/JasonShaw/JokeGenerator.html'">Joke Generator</button>
   <button class="project-button" onclick="window.location.href='https://github.com/Slaxxis/Slaxxis.github.io'">Original GitHub</button>
-
-  <!-- Add more project buttons as needed -->
 </div>
+
+<div id="skills">
+  <h2>Skills</h2>
+  <div class="skill">
+    <span class="skill-name">General Programming</span>
+    <div class="progress-bar">
+      <div class="progress" style="width: 60%;"></div>
+    </div>
+  </div>
+  <div class="skill">
+    <span class="skill-name">Microsoft Office</span>
+    <div class="progress-bar">
+      <div class="progress" style="width: 90%;"></div>
+    </div>
+  </div>
+  <div class="skill">
+    <span class="skill-name">LaTeX</span>
+    <div class="progress-bar">
+      <div class="progress" style="width: 80%;"></div>
+    </div>
+  </div>
+  <div class="skill">
+    <span class="skill-name">Machine Learning</span>
+    <div class="progress-bar">
+      <div class="progress" style="width: 30%;"></div>
+    </div>
+  </div>
+</div>
+
 <script>
   function updateClock() {
     const now = new Date();
