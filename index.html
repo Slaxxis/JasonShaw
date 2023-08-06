@@ -1,144 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Jason Shaw</title>
-  <style>
-    body {
-      background-color: black;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jason Shaw - Homepage</title>
+<style>
+  body {
+    background-color: #1e1e1e;
+    color: white;
+    font-family: "Fira Code", monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+  #animated-text {
+    font-size: 32px;
+    animation: pulsate 2s ease-in-out infinite;
+  }
+  @keyframes pulsate {
+    0% {
+      transform: scale(1);
+      opacity: 0.7;
     }
-    
-    .neon-text {
-      font-family: 'Arial', sans-serif;
-      font-size: 60px;
-      color: rgb(0, 0, 0);
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+    50% {
+      transform: scale(1.2);
+      opacity: 1;
     }
-    
-    .neon-text span {
-      animation: neon-glow 2s ease-in-out infinite alternate;
+    100% {
+      transform: scale(1);
+      opacity: 0.7;
     }
-    
-    .neon-text span:nth-child(4n+1) {
-      color: #ff0000;
-      text-shadow: 0 0 5px #ffffff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
-    }
-    
-    .neon-text span:nth-child(4n+2) {
-      color: #ff0000;
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
-    }
-    
-    .neon-text span:nth-child(4n+3) {
-      color: #ff0000;
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #005eff, 0 0 30px #005eff, 0 0 40px #005eff, 0 0 55px #005eff, 0 0 75px #005eff;
-    }
-    
-    .neon-text span:nth-child(4n+4) {
-      color: #ff0000;
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #005eff, 0 0 30px #005eff, 0 0 40px #005eff, 0 0 55px #005eff, 0 0 75px #005eff;
-    }
-    
-    .sub-text {
-      font-family: 'Arial', sans-serif;
-      font-size: 30px;
-      color: #00deff;
-      text-shadow: 0 0 5px #000000, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #00deff, 0 0 30px #00deff, 0 0 40px #00deff, 0 0 55px #00deff, 0 0 75px #00deff;
-    }
-    
-    .sub-text span {
-      animation: neon-glow 2s ease-in-out infinite alternate;
-    }
-    
-    .button-container {
-      display: flex;
-      margin-top: 20px;
-    }
-    
-    .glowing-button {
-      font-family: 'Arial', sans-serif;
-      font-size: 20px;
-      padding: 10px 20px;
-      margin: 0 10px;
-      color: black;
-      background-color: #272727;
-      border: dotted;
-      border-radius: 5px;
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #00deff, 0 0 30px #00deff, 0 0 40px #00deff, 0 0 55px #00deff, 0 0 75px #00deff;
-      animation: neon-glow 2s ease-in-out infinite alternate;
-      cursor: pointer;
-    }
-    
-    .footer-text {
-      font-family: 'Arial', sans-serif;
-      font-size: 16px;
-      color: rgb(116, 116, 116);
-      text-align: center;
-      margin-top: 30px;
-      position: sticky;
-      bottom: 60;
-      left: 0;
-      width: 80%;
-    }
-    
-    @keyframes neon-glow {
-      from {
-        color: #fff;
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
-      }
-      to {
-        color: black;
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #005eff, 0 0 30px #005eff, 0 0 40px #005eff, 0 0 55px #005eff, 0 0 75px #005eff;
-      }
-    }
-  </style>
+  }
+  #subtext {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  #projects {
+    margin-top: 40px;
+    text-align: center;
+  }
+  .project-button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4ec9b0;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+  .project-button:hover {
+    background-color: #1e7d6e;
+    transform: scale(1.05);
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <h1 class="neon-text">
-      <span>J</span>
-      <span>a</span>
-      <span>s</span>
-      <span>o</span>
-      <span>n</span>
-      <span>&nbsp;</span>
-      <span>S</span>
-      <span>h</span>
-      <span>a</span>
-      <span>w</span>
-    </h1>
-    <p class="sub-text">
-      <span>S</span>
-      <span>l</span>
-      <span>a</span>
-      <span>x</span>
-      <span>x</span>
-      <span>i</span>
-      <span>s</span>
-      <span>.</span>
-      <span>g</span>
-      <span>i</span>
-      <span>t</span>
-      <span>h</span>
-      <span>u</span>
-      <span>b</span>
-      <span>.</span>
-      <span>i</span>
-      <span>o</span>
-    </p>
-    <div class="button-container">
-      <button class="glowing-button" onclick="window.location.href = 'https://slaxxis.github.io/ParticleSim.html'">Particle simulation</button>
-      <button class="glowing-button" onclick="window.location.href = 'https://slaxxis.github.io/NeonLettering.html'">Neon Typing</button>
-      <button class="glowing-button" onclick="window.location.href = 'https://slaxxis.github.io/CatGenerator.html'">Cat Generator</button>
-      <button class="glowing-button" onclick="window.location.href = 'https://slaxxis.github.io/MisuseNasaApi.html'">Abusing NASA image api</button>
-      <button class="glowing-button" onclick="window.location.href = 'https://github.com/Slaxxis/Slaxxis.github.io'">All the code for this website</button>
-    </div>
-    <p class="footer-text">This website was created entirely with HTML. All the projects on it are completely from scratch and do not contain any external content with the exception of API data and several JS libraries.</p>
-  </div>
+<div id="animated-text">Jason Shaw</div>
+<div id="subtext">Jason Shaw's Code Projects</div>
+<div id="projects">
+  <button class="project-button" onclick="window.location.href='slaxxis.github.io/JSClock.html'">JavaScript Clock</button>
+  <button class="project-button" onclick="window.location.href='slaxxis.github.io/CatGenerator.html'">Cat Generator</button>
+  <button class="project-button" onclick="window.location.href='project3.html'">Project 3</button>
+  <!-- Add more project buttons as needed -->
+</div>
+<script>
+  function updateClock() {
+    const now = new Date();
+    const clockElement = document.getElementById("animated-text");
+    const hours = now.getHours();
+    let greeting = "";
+
+    if (hours < 12) {
+      greeting = "Good morning";
+    } else if (hours < 18) {
+      greeting = "Good afternoon";
+    } else {
+      greeting = "Good evening";
+    }
+
+    clockElement.textContent = greeting + ". Enjoy your stay! ";
+  }
+
+  setInterval(updateClock, 1000);
+  updateClock();
+</script>
 </body>
 </html>
