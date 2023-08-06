@@ -1,91 +1,98 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Cat Generator</title>
-    <style>
-      body {
-        background-color: #333333;
-        color: #ffffff;
-        font-family: Arial, sans-serif;
-        text-align: center;
-      }
-      
-      #cat-frame {
-        width: 300px;
-        height: 300px;
-        border: 10px solid #dddddd;
-        margin: 0 auto;
-        padding: 20px;
-        box-sizing: border-box;
-        border-radius: 10px;
-        background-color: #ffffff;
-      }
-      
-      #cat-image {
-        max-width: 100%;
-        max-height: 100%;
-      }
-      
-      #generate-button {
-        display: block;
-        margin: 20px auto;
-        padding: 10px 20px;
-        border-radius: 20px;
-        border: none;
-        background-color: #dddddd;
-        color: #333333;
-        font-size: 16px;
-        cursor: pointer;
-      }
-      
-      #info-box {
-        margin-top: 20px;
-      }
-      
-      .back-button {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: #dddddd;
-        color: #333333;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 20px;
-        cursor: pointer;
-      }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-      function generateCat() {
-        $.ajax({
-          url: 'https://api.thecatapi.com/v1/images/search',
-          method: 'GET',
-          success: function(response) {
-            if (response && response.length > 0) {
-              var catImage = response[0].url;
-              document.getElementById('cat-image').src = catImage;
-            }
-          },
-          error: function() {
-            console.log('Error occurred while fetching cat image.');
-          }
-        });
-      }
-      
-      function goBack() {
-        window.location.href = 'https://slaxxis.github.io/';
-      }
-    </script>
-  </head>
-  <body>
-    <h1>Cat Generator</h1>
-    <div id="cat-frame">
-      <img id="cat-image" src="" alt="Cat Image">
-    </div>
-    <button id="generate-button" onclick="generateCat()">Generate Cat</button>
-    <div id="info-box">
-      <p>This program was coded in HTML and uses thecatapi.com to generate images and gifs.</p>
-    </div>
-    <button class="back-button" onclick="goBack()">Back</button>
-  </body>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Cat Generator with Frame</title>
+<style>
+  body {
+    background-color: #1e1e1e;
+    color: white;
+    font-family: "Fira Code", monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 90vh;
+    margin: 0;
+  }
+  .frame {
+    border: 8px solid #333; /* Darker grey frame */
+    padding: 10px;
+    box-sizing: border-box;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #cat-image {
+    max-width: 100%;
+    max-height: 100%; /* Adjusted to ensure cat fits within the frame */
+  }
+  #generate-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4ec9b0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+  #generate-button:hover {
+    background-color: #1e7d6e;
+    transform: scale(1.05);
+  }
+  #footer {
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.7;
+    margin-top: 20px;
+  }
+  #back-button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    opacity: 0.7;
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="frame">
+  <img id="cat-image" src="" alt="Random Cat">
+</div>
+<button id="generate-button">Generate Cat</button>
+<script>
+  const catImageElement = document.getElementById("cat-image");
+  const generateButton = document.getElementById("generate-button");
+
+  function fetchRandomCat() {
+    fetch("https://api.thecatapi.com/v1/images/search")
+      .then(response => response.json())
+      .then(data => {
+        const imageUrl = data[0].url;
+        catImageElement.src = imageUrl;
+      })
+      .catch(error => {
+        console.error("Error fetching cat image:", error);
+      });
+  }
+
+  fetchRandomCat();
+
+  generateButton.addEventListener("click", fetchRandomCat);
+</script>
+<div id="footer">
+  HTML Cat Generator<br>
+  Created by Jason Shaw
+</div>
+<button id="back-button" onclick="window.location.href='https://slaxxis.github.io/'">Back</button>
+</body>
 </html>
