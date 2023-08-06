@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me - Jason Shaw</title>
+<style>
+  body {
+    background-color: #1e1e1e;
+    color: white;
+    font-family: "Fira Code", monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+  #back-button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    opacity: 1;
+  }
+
+  #about-text {
+    text-align: center;
+    margin-top: 40px;
+  }
+  #typed-text {
+    white-space: pre-wrap;
+    font-size: 16px;
+  }
+  /* Rest of your styles... */
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+<button id="back-button" onclick="window.location.href='https://slaxxis.github.io/JasonShaw/'">Back</button>
+<div id="about-text">
+  <h2>About Me</h2>
+  <p id="typed-text"></p>
+</div>
+
+<script>
+  function updateClock() {
+    // Your existing clock update code...
+  }
+
+  function typeText(text, element) {
+    let i = 0;
+    const speed = 10; // Adjust typing speed here
+    function type() {
+      if (i < text.length) {
+        element.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      }
+    }
+    type();
+  }
+
+  function showAboutText() {
+    const typedTextElement = document.getElementById("typed-text");
+    const aboutText = `I am Jason Shaw Jr, a highschool senior at Fernandina Beach High School with bold plans for the future. My 5 year plan consists of completing a bachelors in Mechanical or Electrical engineering and either immediately finding a job in my chosen field, or going on to pursue graduate studies so I can advance my passion for creation even farther.
+
+    For the last few years I have spent countless hours online researching and learning about everything imaginable. My passion for learning has no bounds, and as a result, I have delved into an expanse of self taught learning from the comfort of my own bedroom. I have a good grasp on mathematical logic, programming, and engineering alike.
+    
+    Through my studies I have produced several publications including a geometric integral formula, this website and all its projects, and most recently, a research paper about dielectric elastomers and other electroactive polymers. 
+    
+    I can be contacted at jj@mountmyfish.com with any questions or inquiries.`;
+    typeText(aboutText, typedTextElement);
+  }
+
+  setInterval(updateClock, 1000);
+  updateClock();
+  showAboutText();
+</script>
+<a id="back-button" href="https://slaxxis.github.io/JasonShaw/">Back</a>
+</body>
+</html>
