@@ -38,9 +38,13 @@
     font-size: 18px;
     margin-top: 10px;
   }
-  #projects {
+  #personal-projects {
     margin-top: 40px;
     text-align: center;
+  }
+  .project-label {
+    font-size: 24px;
+    margin-bottom: 10px;
   }
   .project-button {
     padding: 10px 20px;
@@ -99,6 +103,9 @@
     .skill-name {
       font-size: 16px;
     }
+    .project-label {
+      font-size: 20px;
+    }
   }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
@@ -106,7 +113,9 @@
 <body>
 <div id="animated-text">Jason Shaw</div>
 <div id="subtext">Jason Shaw: Engineer and Innovator</div>
-<div id="projects">
+
+<div id="personal-projects">
+  <h2 class="project-label">Personal Projects</h2>
   <button class="project-button" onclick="window.location.href='https://slaxxis.github.io/JasonShaw/JSClock.html'">JavaScript Clock</button>
   <button class="project-button" onclick="window.location.href='https://slaxxis.github.io/JasonShaw/CatGenerator.html'">Cat Generator</button>
   <button class="project-button" onclick="window.location.href='https://slaxxis.github.io/JasonShaw/JokeGenerator.html'">Joke Generator</button>
