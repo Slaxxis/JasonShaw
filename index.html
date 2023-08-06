@@ -102,25 +102,14 @@
     height: 100%;
     background-color: #4ec9b0;
     border-radius: 10px;
-    transition: width 0.5s;
+    transition: width 1s;
   }
-  /* Media queries for mobile devices */
-  @media (max-width: 768px) {
-    #animated-text {
-      font-size: 24px;
-    }
-    #subtext {
-      font-size: 16px;
-    }
-    .project-button {
-      font-size: 12px;
-    }
-    .skill-name {
-      font-size: 16px;
-    }
-    .project-label {
-      font-size: 18px;
-    }
+  .progress {
+    width: 0;
+    height: 100%;
+    background-color: #4ec9b0;
+    border-radius: 10px;
+    transition: width 0s;
   }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
@@ -170,25 +159,26 @@
 </div>
 
 <script>
-  function updateClock() {
-    const now = new Date();
-    const clockElement = document.getElementById("animated-text");
-    const hours = now.getHours();
-    let greeting = "";
+  function animateProgressBar(progressBar, targetWidth) {
+    let width = 0;
+    const progressBarElement = progressBar.querySelector(".progress");
 
-    if (hours < 12) {
-      greeting = "Good Morning";
-    } else if (hours < 18) {
-      greeting = "Good Afternoon";
-    } else {
-      greeting = "Good Evening";
-    }
-
-    clockElement.textContent = greeting + "";
+    const interval = setInterval(() => {
+      if (width >= targetWidth) {
+        clearInterval(interval);
+      } else {
+        width++;
+        progressBarElement.style.width = width + "%";
+      }
+    }, 30); // Adjust the interval for smoother animation
   }
 
-  setInterval(updateClock, 1000);
-  updateClock();
+  const progressBars = document.querySelectorAll(".progress-bar");
+  const targetWidths = [60, 90, 80, 70]; // Adjust the target widths accordingly
+
+  progressBars.forEach((progressBar, index) => {
+    animateProgressBar(progressBar, targetWidths[index]);
+  });
 </script>
 </body>
 </html>
