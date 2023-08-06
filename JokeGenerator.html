@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Joke Generator</title>
+<style>
+  body {
+    background-color: #1e1e1e;
+    color: white;
+    font-family: "Fira Code", monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 90vh;
+    margin: 0;
+  }
+  #joke-container {
+    text-align: center;
+  }
+  #joke-type {
+    margin-bottom: 10px;
+  }
+  #generate-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4ec9b0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+  #generate-btn:hover {
+    background-color: #1e7d6e;
+    transform: scale(1.05);
+  }
+  #joke-output {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  #note {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-top: 10px;
+    text-align: center;
+  }
+  #footer {
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.7;
+    margin-top: 20px;
+  }
+  #back-button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    opacity: 0.7;
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="joke-container">
+  <h1>HTML Joke Generator</h1>
+  <label for="joke-type">Select a joke category:</label>
+  <select id="joke-type">
+    <option value="Any">Any</option>
+    <option value="Programming">Programming</option>
+    <option value="Miscellaneous">Miscellaneous</option>
+    <option value="Dark">Dark</option>
+    <option value="Pun">Pun</option>
+    <option value="Spooky">Spooky</option>
+    <option value="Christmas">Christmas</option>
+    <!-- Add more categories as needed -->
+  </select>
+  <button id="generate-btn">Generate Joke</button>
+  <p id="joke-output"></p>
+  <p id="note">Note: All jokes are randomly generated from an API, may be upsetting, and by no means reflect any of my personal opinions.</p>
+</div>
+<script>
+  const generateBtn = document.getElementById('generate-btn');
+  const jokeTypeSelect = document.getElementById('joke-type');
+  const jokeOutput = document.getElementById('joke-output');
+  
+  generateBtn.addEventListener('click', () => {
+      const jokeType = jokeTypeSelect.value;
+      
+      fetch(`https://v2.jokeapi.dev/joke/${jokeType}`)
+          .then(response => response.json())
+          .then(data => {
+              if (data.type === 'single') {
+                  jokeOutput.textContent = data.joke;
+              } else if (data.type === 'twopart') {
+                  jokeOutput.textContent = `${data.setup} ${data.delivery}`;
+              } else {
+                  jokeOutput.textContent = 'No joke available.';
+              }
+          })
+          .catch(error => {
+              jokeOutput.textContent = 'An error occurred while fetching the joke.';
+              console.error(error);
+          });
+  });
+</script>
+<div id="footer">
+  HTML Joke Generator<br>
+  Created by Jason Shaw
+</div>
+<button id="back-button" onclick="window.location.href='https://slaxxis.github.io/html-joke-generator/'">Back</button>
+</body>
+</html>
